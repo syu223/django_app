@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Record 登録</title>
+</head>
+<body>
+    <h1>Record 登録</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}  <!-- フォームフィールドを表示 -->
+        <button type="submit">登録</button>
+    </form>
+    <a href="{% url 'karute_list' %}">Karute 一覧に戻る</a>
+</body>
+</html>

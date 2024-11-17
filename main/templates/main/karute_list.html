@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>銘柄記録リスト</title>
+</head>
+<body>
+    <h1>銘柄記録リスト</h1>
+    <a href="{% url 'stock_list' %}">戻る</a>
+    <form method="get" action=".">
+        <label for="code">銘柄コード:</label>
+        <input type="text" name="code" id="code">
+        <button type="submit">検索</button>
+    </form>
+    
+    <ul>
+        {% for karute in karutes %}
+            <li>
+                {{ karute.company }} ({{ karute.code }})
+                <!-- 詳細ページへのリンクを追加 -->
+                <a href="{% url 'karute_detail' code=karute.code %}">詳細を見る</a>
+                <ul>
+                    {% for record in karute.sorted_records %}
+                        <li>{{ record.0 }} - {{ record.1 }}</li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% empty %}
+            <li>検索結果がありません。</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

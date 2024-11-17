@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Monitoring Stocks</title>
+    <style>
+        
+        .stock-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);/* 現在4列毎に表示 */
+            gap: 10px;
+        }
+        .stock-item {
+            text-align: center;
+            box-sizing: border-box;
+        }
+        img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Monitoring Stocks</h1>
+    <a href="{% url 'stock_list' %}">戻る</a>
+    <div class="stock-container">
+        {% for stock in stocks %}
+            <div class="stock-item">
+                <h3>{{ stock.name }} ({{ stock.code }})</h3>
+                <img src="https://kabutan.jp/chimg/?c={{ stock.code }}&a=1&s=3&m=1&v" alt="チャート画像">
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

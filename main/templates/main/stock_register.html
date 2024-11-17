@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Register</title>
+</head>
+<body>
+    <h1>株の登録</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">登録</button>
+    </form>
+    <a href="{% url 'stock_list' %}">株一覧へ戻る</a>
+</body>
+</html>
